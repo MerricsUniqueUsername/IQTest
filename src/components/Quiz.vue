@@ -2,7 +2,7 @@
   <div class="quiz">
     <div class="top">
       <div class="question-num">
-        {{ questionNum + 1 }}/{{ quiz.length }}
+        {{ questionNum + 1 }}/{{ questionCount }}
       </div>
       <Timer class="timer" ref="timer" />
     </div>
@@ -30,25 +30,12 @@ export default {
       // Quiz
       quiz: [
         { question: "", answers: [] } 
-
-
-        // { question: "What's your favorite color?", answers: ["Red", "Blue", "Green"] },
-        // { question: "Who won the Nobel Prize in Literature in 2020?", answers: ["Jane Austen", "George Orwell", "F. Scott Fitzgerald"] },
-        // { question: "What's the capital of France?", answers: ["Paris", "London", "Berlin"] },
-        // { question: "What is the largest planet in our solar system?", answers: ["Earth", "Jupiter", "Mars"] },
-        // { question: "Who painted the Mona Lisa?", answers: ["Leonardo da Vinci", "Vincent van Gogh", "Pablo Picasso"] },
-        // { question: "What is the chemical symbol for water?", answers: ["H2O", "O2", "CO2"] },
-        // { question: "How many continents are there on Earth?", answers: ["5", "6", "7"] },
-        // { question: "Who wrote 'To Kill a Mockingbird'?", answers: ["Harper Lee", "Mark Twain", "Ernest Hemingway"] },
-        // { question: "What is the main ingredient in guacamole?", answers: ["Tomato", "Avocado", "Onion"] },
-        // { question: "Which planet is known as the Red Planet?", answers: ["Earth", "Mars", "Venus"] },
-        // { question: "What is the smallest country in the world?", answers: ["Monaco", "San Marino", "Vatican City"] },
-        // { question: "Who wrote 'The Great Gatsby'?", answers: ["F. Scott Fitzgerald", "Jay Gatsby", "Harper Lee"] },
       ],
     
       questionNum: 0,
       answers: {},
       playing: true,
+      questionCount: 10,
     }
   },
   methods: {
@@ -62,28 +49,27 @@ export default {
       this.answers[this.quiz[this.questionNum].question] = answer;
 
       // If final question, stop test
-      if (this.questionNum === this.quiz.length - 1) {
+      if (this.questionNum === this.questionCount - 1) {
         this.endQuiz();
         return;
       }
 
       this.questionNum++;
+      this.generateQuestion();
+    },
+    generateQuestion() {
+      axios.get('https://iqtestbackend.vercel.app/create_question')
+      .then(response => {
+        this.quiz[this.questionNum] = response.data
+        this.quiz.push({ question: "", answers: [] } )
+      })
+      .catch(error => {
+        console.error(error);
+      });
     }
   },
   mounted() {
-    fetch('https://iqtestbackend.vercel.app/create_question')
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok ' + response.statusText);
-      }
-      return response.json(); // Parse the JSON from the response
-    })
-    .then(data => {
-      console.log(data); // Use the data here
-    })
-    .catch(error => {
-      console.error('Error fetching data:', error);
-    });
+    this.generateQuestion();
   }
 }
 </script>
