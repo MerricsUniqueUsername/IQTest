@@ -38,6 +38,8 @@ export default {
         { question: "Who wrote 'To Kill a Mockingbird'?", answers: ["Harper Lee", "Mark Twain", "Ernest Hemingway"] },
         { question: "What is the main ingredient in guacamole?", answers: ["Tomato", "Avocado", "Onion"] },
         { question: "Which planet is known as the Red Planet?", answers: ["Earth", "Mars", "Venus"] },
+        { question: "What is the smallest country in the world?", answers: ["Monaco", "San Marino", "Vatican City"] },
+        { question: "Who wrote 'The Great Gatsby'?", answers: ["F. Scott Fitzgerald", "Jay Gatsby", "Harper Lee"] },
       ],
     
       questionNum: 0,
