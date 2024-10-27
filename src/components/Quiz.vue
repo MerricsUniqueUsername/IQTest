@@ -15,6 +15,7 @@
 import Question from "./Question.vue"
 import EndScreen from "./EndScreen.vue"
 import Timer from "./Timer.vue"
+import axios from 'axios'
 
 export default {
   name: "Quiz",
@@ -28,18 +29,21 @@ export default {
 
       // Quiz
       quiz: [
-        { question: "What's your favorite color?", answers: ["Red", "Blue", "Green"] },
-        { question: "Who won the Nobel Prize in Literature in 2020?", answers: ["Jane Austen", "George Orwell", "F. Scott Fitzgerald"] },
-        { question: "What's the capital of France?", answers: ["Paris", "London", "Berlin"] },
-        { question: "What is the largest planet in our solar system?", answers: ["Earth", "Jupiter", "Mars"] },
-        { question: "Who painted the Mona Lisa?", answers: ["Leonardo da Vinci", "Vincent van Gogh", "Pablo Picasso"] },
-        { question: "What is the chemical symbol for water?", answers: ["H2O", "O2", "CO2"] },
-        { question: "How many continents are there on Earth?", answers: ["5", "6", "7"] },
-        { question: "Who wrote 'To Kill a Mockingbird'?", answers: ["Harper Lee", "Mark Twain", "Ernest Hemingway"] },
-        { question: "What is the main ingredient in guacamole?", answers: ["Tomato", "Avocado", "Onion"] },
-        { question: "Which planet is known as the Red Planet?", answers: ["Earth", "Mars", "Venus"] },
-        { question: "What is the smallest country in the world?", answers: ["Monaco", "San Marino", "Vatican City"] },
-        { question: "Who wrote 'The Great Gatsby'?", answers: ["F. Scott Fitzgerald", "Jay Gatsby", "Harper Lee"] },
+        { question: "", answers: [] } 
+
+
+        // { question: "What's your favorite color?", answers: ["Red", "Blue", "Green"] },
+        // { question: "Who won the Nobel Prize in Literature in 2020?", answers: ["Jane Austen", "George Orwell", "F. Scott Fitzgerald"] },
+        // { question: "What's the capital of France?", answers: ["Paris", "London", "Berlin"] },
+        // { question: "What is the largest planet in our solar system?", answers: ["Earth", "Jupiter", "Mars"] },
+        // { question: "Who painted the Mona Lisa?", answers: ["Leonardo da Vinci", "Vincent van Gogh", "Pablo Picasso"] },
+        // { question: "What is the chemical symbol for water?", answers: ["H2O", "O2", "CO2"] },
+        // { question: "How many continents are there on Earth?", answers: ["5", "6", "7"] },
+        // { question: "Who wrote 'To Kill a Mockingbird'?", answers: ["Harper Lee", "Mark Twain", "Ernest Hemingway"] },
+        // { question: "What is the main ingredient in guacamole?", answers: ["Tomato", "Avocado", "Onion"] },
+        // { question: "Which planet is known as the Red Planet?", answers: ["Earth", "Mars", "Venus"] },
+        // { question: "What is the smallest country in the world?", answers: ["Monaco", "San Marino", "Vatican City"] },
+        // { question: "Who wrote 'The Great Gatsby'?", answers: ["F. Scott Fitzgerald", "Jay Gatsby", "Harper Lee"] },
       ],
     
       questionNum: 0,
@@ -66,6 +70,21 @@ export default {
       this.questionNum++;
     }
   },
+  mounted() {
+    fetch('https://iqtestbackend.vercel.app/create_question')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok ' + response.statusText);
+      }
+      return response.json(); // Parse the JSON from the response
+    })
+    .then(data => {
+      console.log(data); // Use the data here
+    })
+    .catch(error => {
+      console.error('Error fetching data:', error);
+    });
+  }
 }
 </script>
 
