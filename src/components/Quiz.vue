@@ -58,13 +58,15 @@ export default {
       this.generateQuestion();
     },
     generateQuestion() {
-      axios.get('https://iqtestbackend.vercel.app/create_question')
+      axios.post('https://iqtestbackend.vercel.app/create_question', {
+          currentAnswers: this.answers
+      })
       .then(response => {
-        this.quiz[this.questionNum] = response.data
-        this.quiz.push({ question: "", answers: [] } )
+          this.quiz[this.questionNum] = response.data;
+          this.quiz.push({ question: "", answers: [] });
       })
       .catch(error => {
-        console.error(error);
+          console.error(error);
       });
     }
   },
