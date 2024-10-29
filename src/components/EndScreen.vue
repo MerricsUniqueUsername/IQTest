@@ -43,4 +43,7 @@ export default {
   .item-container {
     padding: 13px;
   }
+  * {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif !important;
+  }
 </style>
