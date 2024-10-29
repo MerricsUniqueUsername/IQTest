@@ -1,6 +1,8 @@
 <template>
-  <div ref="item">
-    <p style="display: flex; align-items: center; justify-content: center;">Calculating IQ...</p>
+  <div class="item-container">
+    <div ref="item">
+      <p style="display: flex; align-items: center; justify-content: center;">Calculating IQ...</p>
+    </div>
   </div>
 </template>
 
@@ -21,7 +23,7 @@ export default {
           currentAnswers: this.answers
       })
       .then(response => {
-          this.res = response.data.replace('html', '').replace('```', '');
+          this.res = response.data.replace('html', '').replaceAll('```', '').replace;
 
           // Change innerHTML of item ref
           this.$refs.item.innerHTML = `${this.res}`;
@@ -38,5 +40,7 @@ export default {
 </script>
 
 <style>
-
+  .item-container {
+    padding: 13px;
+  }
 </style>
