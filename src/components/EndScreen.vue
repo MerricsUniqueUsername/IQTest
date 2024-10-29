@@ -21,7 +21,7 @@ export default {
           currentAnswers: this.answers
       })
       .then(response => {
-          this.res = response.data;
+          this.res = response.data.replace('html', '').replace('```', '');
 
           // Change innerHTML of item ref
           this.$refs.item.innerHTML = `${this.res}`;
