@@ -23,7 +23,7 @@ export default {
           currentAnswers: this.answers
       })
       .then(response => {
-          this.res = response.data.replace('html', '').replaceAll('```', '').replace;
+          this.res = response.data.replace('html', '').replaceAll('```', '');
 
           // Change innerHTML of item ref
           this.$refs.item.innerHTML = `${this.res}`;
