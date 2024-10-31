@@ -36,7 +36,7 @@ export default {
       ],
     
       questionNum: 0,
-      answers: {},
+      answers: {'question': 'answer'},
       lastTenAnswers: [],
       playing: true,
       questionCount: 35,
@@ -208,7 +208,7 @@ export default {
 
     // Create popups
     for(let i = 0; i < 3; i++) {
-      this.popupNums.push(Math.floor(Math.random() * (24 - 12 + 1)) + 12);
+      this.popupNums.push(Math.floor(Math.random() * (32 - 5 + 1)) + 12);
     }
 
     // Get popups axios

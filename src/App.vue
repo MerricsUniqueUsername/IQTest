@@ -2,9 +2,6 @@
 
   <Quiz />
 
-  <!-- Popup -->
-  <Popup ref="popup"/>
-
 
 </template>
 

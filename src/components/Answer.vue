@@ -26,13 +26,6 @@ export default {
   line-height: 1.4;
   text-transform: uppercase;
 
-  /* Sophisticated grayscale palette */
-  /* background: linear-gradient(180deg, #424242 0%, #383838 100%);
-  color: #FFFFFF;
-  border: 1px solid #2A2A2A;
-  border-bottom: 2px solid #1A1A1A;
-  border-radius: 6px; */
-
   /* Professional effects */
   box-shadow: 
   0 2px 4px rgba(0, 0, 0, 0.1),
@@ -52,7 +45,6 @@ export default {
 
 /* Hover interaction */
 .button:hover {
-  /* background: linear-gradient(180deg, #4A4A4A 0%, #404040 100%); */
   box-shadow: 
   0 4px 8px rgba(0, 0, 0, 0.15),
   0 8px 16px rgba(0, 0, 0, 0.1),
@@ -62,7 +54,6 @@ export default {
 
 /* Active state */
 .button:active {
-  /* background: linear-gradient(180deg, #363636 0%, #3A3A3A 100%); */
   box-shadow: 
   0 1px 2px rgba(0, 0, 0, 0.2),
   inset 0 1px 2px rgba(0, 0, 0, 0.15);
