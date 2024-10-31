@@ -36,7 +36,7 @@ export default {
       ],
     
       questionNum: 0,
-      answers: {'question': 'answer'},
+      answers: {'1+1': '2'},
       lastTenAnswers: [],
       playing: true,
       questionCount: 35,
