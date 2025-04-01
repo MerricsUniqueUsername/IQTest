@@ -12,7 +12,8 @@
           @click="$emit('postAnswer', answer)" 
           v-for="answer in answers" 
           :key="answer" 
-          :text="answer" 
+          :text="answer"
+          v-show="!String(answer).includes('depend')"
         />
       </div>
     </template>

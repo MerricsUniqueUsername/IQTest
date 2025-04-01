@@ -20,19 +20,19 @@ export default {
   methods: {
     calculateIq() {
       axios.post('https://iqtestbackend.vercel.app/estimate_iq/', {
-          currentAnswers: this.answers
+        currentAnswers: this.answers
       })
       .then(response => {
-          this.res = response.data.replace('html', '').replaceAll('```', '');
+        this.res = response.data.replace('html', '').replaceAll('```', '');
 
-          // Change innerHTML of item ref
-          this.$refs.item.innerHTML = `${this.res}`;
+        // Change innerHTML of item ref
+        this.$refs.item.innerHTML = `${this.res}`;
       })
       .catch(error => {
-          console.error(error);
-          
-          // Try again
-          this.calculateIq();
+        console.error(error);
+        
+        // Try again
+        this.calculateIq();
       });
     }
   }
