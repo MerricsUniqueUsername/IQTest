@@ -52,7 +52,7 @@ export default {
 }
 
 .question {
-  font-size: 45px;
+  font-size: 25px;
   text-align: center;
   margin-bottom: 20px;
   display: flex;
